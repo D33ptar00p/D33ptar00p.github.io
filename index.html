@@ -1,7 +1,163 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 35px 20px;
+  height: 100%;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#Home {background-color: white;color:black}
+#Contents {background-color: green;}
+#Contact {background-color: blue;}
+#About {background-color: orange;}
+</style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
+<button class="tablink" onclick="openPage('Contents', this, 'green')" >Contents</button>
+<button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
+<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+
+<div id="Home" class="tabcontent">
+  <h1>DEEPTAROOP MOJUMDAR</h1>
+  <div style="width: 25%; float: left;"><img src="C:\Users\deept\Pictures\deep.jpg">
+  </div>
+  <div style="width: 75%; float: left;">
+	<div>
+	<p>Postgraduate student in Data Science and Analytics at Royal Holloway University of London</p>
+	<p>
+	I have 7+ years of experience working as a technology consultant. During my tenure I have worked as a Cloud 
+	Support/DevOps/Linux Engineer for global consultancy firms, where I helped in transforming delivery through 
+	innovative solutions leveraging automation to reduce manual effort and cost.
+	</p>
+	    <a href="mailto:deeptaroop2015@gmail.com">
+         <img  src="C:\Users\deept\Downloads\gmail.png" width="60" height="45"></img>
+		</a> 
+		<a href="https://www.linkedin.com/in/deeptaroop-mojumdar-208a1911b/">
+		 <img src="C:\Users\deept\Downloads\linkedin.png" width="70" height="50"></img>
+		</a>
+		<a href="https://github.com/D33ptar00p/">
+		 <img src="C:\Users\deept\Downloads\github.png" width="70" height="50"></img>
+		</a> 
+	<h2> The Journey</h2>
+	<div style:"width:50%">
+	<img src="C:\Users\deept\Pictures\journey2.png" width="100%">
+	</div>
+	</div>
+	<div>
+	
+	</div>
+	</div>
+</div> 
+
+
+<div id="Contents" class="tabcontent">
+  <video autoplay="autoplay" controls="controls" preload="preload" style="height: 200px;width: 24% " >
+			<source src="C:\Users\deept\Pictures\Camera Roll\DM_OpenClassrooms.mp4" type="video/mp4"></source>
+  </video>
+  <video autoplay="autoplay" controls="controls" preload="preload" style="height: 200px;width: 24% ">
+			<source src="C:\Users\deept\Downloads\DataFuel-20220510T131501Z-001\DataFuel\pycharm.mp4" type="video/mp4"></source>
+		</video>
+   <video autoplay="autoplay" controls="controls" preload="preload" style="height: 200px;width: 24% ">
+			<source src="C:\Users\deept\Downloads\DataFuel-20220510T131501Z-001\DataFuel\colabnotebook.mp4" type="video/mp4"></source>
+		</video>
+   
+   <div	style="height: 200px;width: 24% ;color:black;text-align:center;justify-content: center;  float: left;" >
+   <a href="C:\Users\deept\Deep\IRIS_KNN_analysis.html">
+	<div style="background-color:white;color:black;text-align:center;padding:70px" href="C:/Users/NAGCM/Downloads/IRIS_KNN_analysis.html"> IRIS DATASET ANALYSIS</div>
+	</div>	
+     
+	 <div	style="height: 200px;width: 24% ;color:black;text-align:center;justify-content: center ; float: left;" >
+   <a href="C:\Users\deept\Deep\IRIS_KNN_analysis.html">
+	<div style="background-color:white;color:black;text-align:center;padding:70px" href="C:/Users/NAGCM/Downloads/IRIS_KNN_analysis.html"> K NEAREST NEIGHBOUR ALORITHM</div>
+	</div>
+    
+	<div	style="height: 200px;width: 24% ;color:black;text-align:center;justify-content: center;float: left;" >
+   <a href="C:\Users\deept\Deep\IRIS_KNN_analysis.html">
+	<div style="background-color:white;color:black;text-align:center;padding:70px" href="C:/Users/NAGCM/Downloads/IRIS_KNN_analysis.html"> LASSO ALGORITHM</div>
+	</div>
+     
+	 <div	style="height: 200px;width: 24% ;color:black;text-align:center;justify-content: center; float: left;" >
+   <a href="C:\Users\deept\Deep\IRIS_KNN_analysis.html">
+	<div style="background-color:white;color:black;text-align:center;padding:70px" href="C:/Users/NAGCM/Downloads/IRIS_KNN_analysis.html"> CONFORMAL PREDICTIONS</div>
+	</div>
+
+      <div	style="height: 200px;width: 24% ;color:black;text-align:center;justify-content: center; float: left" >
+   <a href="C:\Users\deept\Deep\IRIS_KNN_analysis.html">
+	<div style="background-color:white;color:black;text-align:center;padding:70px" href="C:/Users/NAGCM/Downloads/IRIS_KNN_analysis.html"> INDCTIVE CONFORMAL PREDICTOR</div>
+	</div>
+
+   </a>	
+</div>
+
+<div id="Contact" class="tabcontent">
+  <h3>Contact</h3>
+  <p>Get in touch, or swing by for a cup of coffee.</p>
+</div>
+
+<div id="About" class="tabcontent">
+  <h3>About</h3>
+  <p>Who we are and what we do.</p>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
 </body>
-</html>
+</html> 
