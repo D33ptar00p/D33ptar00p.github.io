@@ -1,163 +1,636 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {box-sizing: border-box}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deeptaroop Mojumdar · Cloud · DevOps · Data Engineer</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --primary: #1f3a93;
+      --accent: #f39c12;
+      --text: #111;
+      --muted: #5f6b81;
+      --border: #e0e6f4;
+      font-size: 16px;
+    }
 
-/* Set height of body and the document to 100% */
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-/* Style tab links */
-.tablink {
-  background-color: #555;
-  color: white;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 25%;
-}
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
 
-.tablink:hover {
-  background-color: #777;
-}
+    a {
+      color: inherit;
+    }
 
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-  color: white;
-  display: none;
-  padding: 35px 20px;
-  height: 100%;
-}
+    .page {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
 
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
+    header.hero {
+      background: linear-gradient(135deg, #122044, #274b7a);
+      color: #fff;
+      padding: 48px;
+      border-radius: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: center;
+      box-shadow: 0 25px 60px rgba(14, 30, 84, 0.25);
+    }
 
-#Home {background-color: white;color:black}
-#Contents {background-color: green;}
-#Contact {background-color: blue;}
-#About {background-color: orange;}
-</style>
+    .hero-text h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.4rem, 4vw, 3rem);
+    }
+
+    .hero-text h2 {
+      margin: 0 0 18px;
+      font-weight: 400;
+      color: #d9e4ff;
+    }
+
+    .hero-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .contact-grid {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      font-size: 0.95rem;
+    }
+
+    .contact-grid span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-highlights {
+      min-width: 260px;
+      margin-left: auto;
+      flex: 1;
+    }
+
+    .hero-highlights h3 {
+      margin: 0 0 16px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #fddba2;
+    }
+
+    .highlight-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .highlight-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .highlight-card span {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 4px;
+    }
+
+    .highlight-card strong {
+      font-size: 1.35rem;
+      display: block;
+      color: #fff;
+    }
+
+    .highlight-card p {
+      margin: 6px 0 0;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    section {
+      margin-top: 36px;
+      background: var(--card);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+      border: 1px solid var(--border);
+    }
+
+    section h3 {
+      margin: 0 0 16px;
+      font-size: 1.4rem;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    section h3::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .summary {
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .skill-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      background: #fbfcff;
+    }
+
+    .skill-card h4 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      color: var(--primary);
+    }
+
+    .skill-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      background: #fbfcff;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .project-card h4 {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--primary);
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .project-card span {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .project-card a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .posts-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .post-card {
+      background: linear-gradient(145deg, #fefefe, #f3f6ff);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100%;
+    }
+
+    .post-card span {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .post-card h4 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    .post-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .post-card a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 8px;
+      align-self: flex-start;
+    }
+
+    .experience-item + .experience-item,
+    .education-item + .education-item {
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+      padding-top: 24px;
+    }
+
+    .item-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .item-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .item-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .item-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .item-title h4 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .item-header span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .item-subtitle {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .experience-item ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .list-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      header.hero {
+        padding: 32px 24px;
+      }
+
+      section {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <main class="page">
+    <header class="hero">
+      <div class="hero-photo" aria-hidden="true">
+        <img src="statics/deep_avatar_black_tshirt_white_bg.png" alt="Deeptaroop Mojumdar portrait" />
+      </div>
+      <div class="hero-text">
+        <h1>Deeptaroop Mojumdar</h1>
+        <h2>Cloud · DevOps · Data Engineer</h2>
+        <div class="contact-grid">
+          <span>📍 Staines, UK</span>
+          <span>📞 <a href="tel:+447471184320">+44 7471 184320</a></span>
+          <span>✉️ <a href="mailto:deeptaroop2015@gmail.com">deeptaroop2015@gmail.com</a></span>
+          <span>🔗 <a href="https://www.linkedin.com/in/deeptaroop-mojumdar-208a1911b/">linkedin.com/in/deeptaroop-mojumdar-208a1911b</a></span>
+        </div>
+      </div>
+      <div class="hero-highlights">
+        <h3>Highlights</h3>
+        <div class="highlight-grid">
+          <div class="highlight-card">
+            <span>Experience</span>
+            <strong>10+ Years</strong>
+            <p>Cloud, DevOps, and Data platforms delivered globally.</p>
+          </div>
+          <div class="highlight-card">
+            <span>Multi-cloud</span>
+            <strong>AWS · Azure · GCP</strong>
+            <p>Architected resilient workloads across three hyperscalers.</p>
+          </div>
+          <div class="highlight-card">
+            <span>Outcomes</span>
+            <strong>15% Cost ↓</strong>
+            <p>Automation-first delivery culture that optimizes spend.</p>
+          </div>
+        </div>
+      </div>
+    </header>
 
-<button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
-<button class="tablink" onclick="openPage('Contents', this, 'green')" >Contents</button>
-<button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
-<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+    <section class="summary">
+      <h3>Summary</h3>
+      <p>
+        Technology consultant with a decade of experience delivering Cloud, DevOps, and Data Engineering initiatives for global organizations.
+        I architect reliable, automation-driven solutions, build data products that surface actionable insights, and champion design thinking and
+        Agile delivery. Certified across cloud platforms, with deep knowledge of Data Science, Machine Learning, and AI for analytical and
+        predictive workloads.
+      </p>
+    </section>
 
-<div id="Home" class="tabcontent">
-  <h1>DEEPTAROOP MOJUMDAR</h1>
-  <div style="width: 25%; float: left;"><img src="statics/deep.jpg">
-  </div>
-  <div style="width: 75%; float: left;">
-	<div>
-	<p>Postgraduate student in Data Science and Analytics at Royal Holloway University of London</p>
-	<p>
-	I have 7+ years of experience working as a technology consultant. During my tenure I have worked as a Cloud 
-	Support/DevOps/Linux Engineer for global consultancy firms, where I helped in transforming delivery through 
-	innovative solutions leveraging automation to reduce manual effort and cost.
-	</p>
-	    <a href="mailto:deeptaroop2015@gmail.com">
-         <img  src="statics/gmail.png" width="60" height="45"></img>
-		</a> 
-		<a href="https://www.linkedin.com/in/deeptaroop-mojumdar-208a1911b/">
-		 <img src="statics/linkedin.png" width="70" height="50"></img>
-		</a>
-		<a href="https://github.com/D33ptar00p/">
-		 <img src="statics/github.png" width="70" height="50"></img>
-		</a> 
-	<h2> The Journey</h2>
-	<div style:"width:50%">
-	<img src="statics/journey2.png" width="100%">
-	</div>
-	</div>
-	<div>
-	
-	</div>
-	</div>
-</div> 
+    <section>
+      <h3>Skills</h3>
+      <div class="grid skills-grid">
+        <div class="skill-card">
+          <h4>Cloud Platforms</h4>
+          <ul>
+            <li>AWS (EC2, S3, RDS, DynamoDB, AppRunner, Amplify, Athena, AppSync, CodeDeploy, ECS, Glue, Cognito, API Gateway, CloudFront, WAF)</li>
+            <li>Azure (Data Factory, Data Lake)</li>
+            <li>GCP (GKE, Cloud services)</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h4>DevOps &amp; Delivery</h4>
+          <ul>
+            <li>CI/CD, GitHub, Terraform, CloudFormation, Kubernetes, Helm, Docker, Packer, Ansible</li>
+            <li>Agile leadership, Automation strategy, DevSecOps guardrails</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h4>Data &amp; ML</h4>
+          <ul>
+            <li>Lakehouse architectures, ETL/ELT with Glue and Databricks</li>
+            <li>PySpark, SQL, Airflow, MLflow experiment tracking</li>
+            <li>Python, Bash, data modeling</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
+    <section>
+      <h3>Featured Projects</h3>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h4>analytics_dashboard</h4>
+          <p>Static analytics microsite showcasing visualizations and storytelling experiments for cloud/data initiatives.</p>
+          <span>Stack: HTML</span>
+          <a href="https://github.com/D33ptar00p/analytics_dashboard">View on GitHub →</a>
+        </div>
+        <div class="project-card">
+          <h4>MachineLearning</h4>
+          <p>Notebook-driven implementations of foundational ML algorithms with experimentation scaffolding.</p>
+          <span>Stack: Jupyter Notebook · Python</span>
+          <a href="https://github.com/D33ptar00p/MachineLearning">View on GitHub →</a>
+        </div>
+        <div class="project-card">
+          <h4>packer_aws_ec2</h4>
+          <p>Packer + HCL templates that bake opinionated AWS AMIs for repeatable infrastructure provisioning.</p>
+          <span>Stack: Packer · HCL</span>
+          <a href="https://github.com/D33ptar00p/packer_aws_ec2">View on GitHub →</a>
+        </div>
+        <div class="project-card">
+          <h4>packer_docker</h4>
+          <p>Reusable Docker image factory powered by Packer, enabling automated base image hardening.</p>
+          <span>Stack: Packer · HCL</span>
+          <a href="https://github.com/D33ptar00p/packer_docker">View on GitHub →</a>
+        </div>
+        <div class="project-card">
+          <h4>fbprophet</h4>
+          <p>Containerized fbprophet setup with curated dependencies for quick time-series experimentation.</p>
+          <span>Stack: Docker</span>
+          <a href="https://github.com/D33ptar00p/fbprophet">View on GitHub →</a>
+        </div>
+      </div>
+      <p style="margin-top:18px;text-align:right;">
+        <a href="https://github.com/D33ptar00p?tab=repositories" style="color:var(--primary);font-weight:600;text-decoration:none;">View more projects →</a>
+      </p>
+    </section>
 
-<div id="Contents" class="tabcontent">
-  <video autoplay="autoplay" controls="controls" preload="preload" style="height: 200px;width: 24% " >
-			<source src="C:\Users\deept\Pictures\Camera Roll\DM_OpenClassrooms.mp4" type="video/mp4"></source>
-  </video>
-  <video autoplay="autoplay" controls="controls" preload="preload" style="height: 200px;width: 24% ">
-			<source src="statics/pycharm.mp4" type="video/mp4"></source>
-		</video>
-   <video autoplay="autoplay" controls="controls" preload="preload" style="height: 200px;width: 24% ">
-			<source src="statics/colabnotebook.mp4" type="video/mp4"></source>
-		</video>
-   
-   <div	style="height: 200px;width: 24% ;color:black;text-align:center;justify-content: center;  float: left;" >
-   <a href="staticsIRIS_KNN_analysis.html">
-	<div style="background-color:white;color:black;text-align:center;padding:70px" href="statics/IRIS_KNN_analysis.html"> IRIS DATASET ANALYSIS</div>
-	</div>	
-     
-	 <div	style="height: 200px;width: 24% ;color:black;text-align:center;justify-content: center ; float: left;" >
-   <a href="statics/IRIS_KNN_analysis.html">
-	<div style="background-color:white;color:black;text-align:center;padding:70px" href="statics/IRIS_KNN_analysis.html"> K NEAREST NEIGHBOUR ALORITHM</div>
-	</div>
-    
-	<div	style="height: 200px;width: 24% ;color:black;text-align:center;justify-content: center;float: left;" >
-   <a href="statics/IRIS_KNN_analysis.html">
-	<div style="background-color:white;color:black;text-align:center;padding:70px" href="statics/IRIS_KNN_analysis.html"> LASSO ALGORITHM</div>
-	</div>
-     
-	 <div	style="height: 200px;width: 24% ;color:black;text-align:center;justify-content: center; float: left;" >
-   <a href="statics/IRIS_KNN_analysis.html">
-	<div style="background-color:white;color:black;text-align:center;padding:70px" href="statics/IRIS_KNN_analysis.html"> CONFORMAL PREDICTIONS</div>
-	</div>
+    <section>
+      <h3>Featured Posts</h3>
+      <div class="posts-grid">
+        <div class="post-card">
+          <span>Move AI · Feb 2024</span>
+          <h4>Move API Launch</h4>
+          <p>Breakdown of how we re-architected the Move AI stack, from GraphQL microservices to Lakehouse telemetry, plus the automation guardrails that keep it resilient.</p>
+          <a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7370777160850124801" target="_blank" rel="noopener noreferrer">View post →</a>
+        </div>
+        <div class="post-card">
+          <span>News Insights</span>
+          <h4>"No Trust" Approach to Reliability</h4>
+          <p>Highlights from our automation-first delivery culture—GitHub Actions reuse, Terraform/CDK convergence, and the DevSecOps controls that keep shipping fast.</p>
+          <a href="https://www.linkedin.com/feed/update/urn:li:share:7389712237378174976" target="_blank" rel="noopener noreferrer">View post →</a>
+        </div>
+        <div class="post-card">
+          <span>Participation</span>
+          <h4>AWS Summit 2023</h4>
+          <p>A retrospective on lessons learned building cloud-native operations, managing enterprise change, and coaching teams through the platform journey.</p>
+          <a href="https://www.linkedin.com/feed/update/urn:li:share:7071605812984471553" target="_blank" rel="noopener noreferrer">View post →</a>
+        </div>
+        <div class="post-card">
+          <span>Carrer Story</span>
+          <h4>3 Years at Move</h4>
+          <p>Reflections on scaling data and cloud platforms, lessons from enterprise DevOps, and how design thinking shapes my delivery style.</p>
+          <a href="https://www.linkedin.com/posts/deeptaroop-mojumdar-208a1911b_dataops-cloudops-careerjourney-activity-7264393815443095553-A5Ep" target="_blank" rel="noopener noreferrer">Read on LinkedIn →</a>
+        </div>
+      </div>
+    </section>
 
-      <div	style="height: 200px;width: 24% ;color:black;text-align:center;justify-content: center; float: left" >
-   <a href="statics/IRIS_KNN_analysis.html">
-	<div style="background-color:white;color:black;text-align:center;padding:70px" href="statics/IRIS_KNN_analysis.html"> INDCTIVE CONFORMAL PREDICTOR</div>
-	</div>
+    <section>
+      <h3>Experience</h3>
+      <div class="experience-item">
+        <div class="item-header">
+          <div class="item-meta">
+            <div class="item-logo">
+              <img src="statics/move_ai_logo.jpeg" alt="Move AI logo" />
+            </div>
+            <div class="item-title">
+              <h4>Lead Cloud / DevOps / Data Engineer · Move AI Pvt. Ltd.</h4>
+              <p class="item-subtitle">Product-scale architecture, platform automation, and analytics enablement</p>
+            </div>
+          </div>
+          <span>London, UK · Feb 2023 – Present</span>
+        </div>
+        <ul>
+          <li>Designed a scalable microservices architecture for the GraphQL API platform and led API performance optimization to keep latency under 100&nbsp;ms.</li>
+          <li>Built Lakehouse data foundations plus Glue/Athena ETL to uncover product usage trends and visualize KPIs in QuickSight.</li>
+          <li>Implemented MLflow-based experiment tracking, centralized backups with defined RTO/RPO, and automated API documentation via Docusaurus.</li>
+          <li>Migrated infrastructure to Terraform/CDK, centralized identity with AWS Identity Center and Control Tower, and enforced GDPR/SOC2 guardrails through DevSecOps.</li>
+          <li>Delivered Auth backends (Okta, Auth0, Google, Apple SSO), reusable GitHub Actions, and a unified error code framework across microservices.</li>
+          <li>Cut cloud operational spend by 15% through usage optimization initiatives.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <div class="item-header">
+          <div class="item-meta">
+            <div class="item-logo">
+              <img src="statics/accenture_logo.png" alt="Accenture logo" />
+            </div>
+            <div class="item-title">
+              <h4>Cloud / DevOps Engineer · Accenture Solutions</h4>
+              <p class="item-subtitle">Cloud operations for a European automotive joint venture</p>
+            </div>
+          </div>
+          <span>Kolkata, India · Mar 2017 – Dec 2021</span>
+        </div>
+        <ul>
+          <li>Administered GKE Kubernetes workloads and drove pilot onboarding for public/private cloud delivery models.</li>
+          <li>Automated Linux patching with Ansible (saving 40 hours/month) and introduced AWX-driven request automations (saving 100 hours/month).</li>
+          <li>Created Automation Anywhere bots that reclaimed 15 hours/month and built Flask-based problem management plus ML forecasting utilities.</li>
+          <li>Standardized server provisioning and hardening to CIS benchmarks while leading problem management and automation improvements.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <div class="item-header">
+          <div class="item-meta">
+            <div class="item-logo">
+              <img src="statics/tcs.png" alt="Tata Consultancy Services logo" />
+            </div>
+            <div class="item-title">
+              <h4>Unix Administrator · Tata Consultancy Services</h4>
+              <p class="item-subtitle">Infrastructure support for global data analytics and insurance clients</p>
+            </div>
+          </div>
+          <span>India · Aug 2014 – Feb 2017</span>
+        </div>
+        <ul>
+          <li>Delivered Linux administration for insurance and analytics organizations, streamlining monitoring and reducing ticket MTTR.</li>
+          <li>Provided 24/7 infrastructure stewardship while coordinating with cross-functional engineering teams.</li>
+        </ul>
+      </div>
+    </section>
 
-   </a>	
-</div>
+    <section>
+      <h3>Education</h3>
+      <div class="education-item">
+        <div class="item-header">
+          <div class="item-meta">
+            <div class="item-logo">
+              <img src="statics/rhul.jpeg" alt="Royal Holloway University of London logo" />
+            </div>
+            <div class="item-title">
+              <h4>MSc, Data Science and Analytics</h4>
+              <p class="item-subtitle">Royal Holloway, University of London</p>
+            </div>
+          </div>
+          <span>2022 – 2023</span>
+        </div>
+        <p class="item-subtitle">Computer Science Scholarship recipient · Passed with Distinction</p>
+      </div>
+      <div class="education-item">
+        <div class="item-header">
+          <div class="item-meta">
+            <div class="item-logo">
+              <img src="statics/wbut.jpeg" alt="West Bengal University of Technology logo" />
+            </div>
+            <div class="item-title">
+              <h4>B.Tech, Electronics &amp; Communications Engineering</h4>
+              <p class="item-subtitle">West Bengal University of Technology</p>
+            </div>
+          </div>
+          <span>2010 – 2014</span>
+        </div>
+        <p class="item-subtitle">8.38 DGPA</p>
+      </div>
+    </section>
 
-<div id="Contact" class="tabcontent">
-  <h3>Contact</h3>
-  <p>Get in touch, or swing by for a cup of coffee.</p>
-</div>
+    <section>
+      <h3>Certifications</h3>
+      <ul class="list-inline">
+        <li>Microsoft Certified: Azure Fundamentals</li>
+        <li>Google Cloud Certified: Associate Cloud Engineer</li>
+        <li>ITIL® Foundation Certificate in IT Service Management</li>
+      </ul>
+    </section>
 
-<div id="About" class="tabcontent">
-  <h3>About</h3>
-  <p>Who we are and what we do.</p>
-</div>
-
-<script>
-function openPage(pageName,elmnt,color) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
-  document.getElementById(pageName).style.display = "block";
-  elmnt.style.backgroundColor = color;
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-   
+    <section>
+      <h3>Recognitions</h3>
+      <ul class="list-inline">
+        <li>Star Performer · Tata Consultancy Services</li>
+        <li>Accenture ACE Award · Growth Catalyst</li>
+        <li>Computer Science Scholarship · Royal Holloway (2019)</li>
+      </ul>
+    </section>
+  </main>
 </body>
-</html> 
+</html>
